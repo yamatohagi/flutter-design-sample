@@ -118,6 +118,7 @@ class _DesignCourseHomeScreenState extends State<DesignCourseHomeScreen> {
           Flexible(
             child: PopularCourseListView(
               callBack: () {
+                print('これ呼ばれてる？');
                 moveTo();
               },
             ),

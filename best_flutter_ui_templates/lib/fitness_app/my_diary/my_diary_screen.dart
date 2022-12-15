@@ -1,4 +1,5 @@
 import 'package:best_flutter_ui_templates/fitness_app/ui_view/body_measurement.dart';
+import 'package:best_flutter_ui_templates/fitness_app/ui_view/body_measurement_0.dart';
 import 'package:best_flutter_ui_templates/fitness_app/ui_view/glass_view.dart';
 import 'package:best_flutter_ui_templates/fitness_app/ui_view/mediterranean_diet_view.dart';
 import 'package:best_flutter_ui_templates/fitness_app/ui_view/title_view.dart';
@@ -6,6 +7,7 @@ import 'package:best_flutter_ui_templates/fitness_app/fitness_app_theme.dart';
 import 'package:best_flutter_ui_templates/fitness_app/my_diary/meals_list_view.dart';
 import 'package:best_flutter_ui_templates/fitness_app/my_diary/water_view.dart';
 import 'package:flutter/material.dart';
+import 'package:best_flutter_ui_templates/design_course/rx_info_page.dart';
 
 class MyDiaryScreen extends StatefulWidget {
   const MyDiaryScreen({Key? key, this.animationController}) : super(key: key);
@@ -18,7 +20,8 @@ class MyDiaryScreen extends StatefulWidget {
 class _MyDiaryScreenState extends State<MyDiaryScreen>
     with TickerProviderStateMixin {
   Animation<double>? topBarAnimation;
-
+  bool cute = false;
+  bool beautiful = false;
   List<Widget> listViews = <Widget>[];
   final ScrollController scrollController = ScrollController();
   double topBarOpacity = 0.0;
@@ -61,8 +64,32 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
 
     listViews.add(
       TitleView(
-        titleTxt: 'Mediterranean diet',
-        subTxt: 'Details',
+        titleTxt: '2022年11月',
+        subTxt: 'この月を見る',
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController!,
+            curve:
+                Interval((1 / count) * 0, 0.5, curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController!,
+      ),
+    );
+
+    listViews.add(
+      BodyMeasurementView(
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController!,
+            curve:
+                Interval((1 / count) * 0, 0.5, curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController!,
+        callBack: () {
+          print('これ呼ばれてる？');
+          moveTo();
+        },
+      ),
+    );
+
+    listViews.add(
+      BodyMeasurement0View(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:
@@ -70,6 +97,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         animationController: widget.animationController!,
       ),
     );
+
     listViews.add(
       MediterranesnDietView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
@@ -86,7 +114,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:
-                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
+                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController!,
       ),
     );
@@ -102,27 +130,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       ),
     );
 
-    listViews.add(
-      TitleView(
-        titleTxt: 'Body measurement',
-        subTxt: 'Today',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 4, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
 
-    listViews.add(
-      BodyMeasurementView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
     listViews.add(
       TitleView(
         titleTxt: 'Water',
@@ -171,6 +179,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
           children: <Widget>[
             getMainListViewUI(),
             getAppBarUI(),
+            // getExpansionTile(),
             SizedBox(
               height: MediaQuery.of(context).padding.bottom,
             )
@@ -179,6 +188,63 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       ),
     );
   }
+
+//ちゃんと動かない
+  Widget getExpansionTile() {
+    return FutureBuilder<bool>(
+      future: getData(),
+      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+        if (!snapshot.hasData) {
+          return const SizedBox();
+        } else {
+          return ListView.builder(
+            controller: scrollController,
+            padding: EdgeInsets.only(
+              top: AppBar().preferredSize.height +
+                  MediaQuery.of(context).padding.top +
+                  24,
+              bottom: 62 + MediaQuery.of(context).padding.bottom,
+            ),
+            itemCount: listViews.length,
+            scrollDirection: Axis.vertical,
+            itemBuilder: (BuildContext context, int index) {
+              widget.animationController?.forward();
+              return ExpansionTile(
+                title: Text('好きなタイプは？'),
+                onExpansionChanged: (bool changed) {
+                  setState(() {
+                    cute = false;
+                    beautiful = changed;
+                  });
+                },
+                children: <Widget>[
+                  CheckboxListTile(
+                    value: cute,
+                    onChanged: (checked) {
+                      setState(() {
+                        cute = checked!;
+                      });
+                    },
+                    title: Text('可愛い系'),
+                  ),
+                  CheckboxListTile(
+                    value: beautiful,
+                    onChanged: (checked) {
+                      setState(() {
+                        beautiful = checked!;
+                      });
+                    },
+                    title: Text('美人系'),
+                  ),
+                ],
+              );
+            },
+          );
+        }
+      },
+    );
+  }
+  
 
   Widget getMainListViewUI() {
     return FutureBuilder<bool>(
@@ -250,7 +316,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'My Diary',
+                                  'お薬手帳',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: FitnessAppTheme.fontName,
@@ -336,4 +402,16 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
       ],
     );
   }
+
+  void moveTo() {
+    Navigator.push<dynamic>(
+      context,
+      MaterialPageRoute<dynamic>(
+        builder: (BuildContext context) => RxInfoPage(
+          value: 10,
+        ),
+      ),
+    );
+  }
+
 }

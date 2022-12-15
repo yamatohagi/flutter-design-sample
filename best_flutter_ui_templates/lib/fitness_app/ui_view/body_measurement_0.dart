@@ -1,17 +1,16 @@
 import 'package:best_flutter_ui_templates/fitness_app/fitness_app_theme.dart';
 import 'package:flutter/material.dart';
 
-class BodyMeasurementView extends StatelessWidget {
+class BodyMeasurement0View extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
-  final Function()? callBack;
-  const BodyMeasurementView(
-      {Key? key, this.animationController, this.animation, this.callBack})
+
+  const BodyMeasurement0View(
+      {Key? key, this.animationController, this.animation})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     return AnimatedBuilder(
       animation: animationController!,
       builder: (BuildContext context, Widget? child) {
@@ -20,9 +19,7 @@ class BodyMeasurementView extends StatelessWidget {
           child: new Transform(
             transform: new Matrix4.translationValues(
                 0.0, 30 * (1.0 - animation!.value), 0.0),
-              child: InkWell(
-                onTap: callBack,
-                child: Padding(
+            child: Padding(
               padding: const EdgeInsets.only(
                   left: 24, right: 24, top: 16, bottom: 18),
               child: Container(
@@ -53,7 +50,7 @@ class BodyMeasurementView extends StatelessWidget {
                             padding: const EdgeInsets.only(
                                 left: 4, bottom: 8, top: 16),
                             child: Text(
-                                  '11月9日',
+                              '11月7日',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontFamily: FitnessAppTheme.fontName,
@@ -75,31 +72,31 @@ class BodyMeasurementView extends StatelessWidget {
                                     padding: const EdgeInsets.only(
                                         left: 4, bottom: 3),
                                     child: Text(
-                                          '揖斐総合病院',
+                                      '春日井総合病院',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: FitnessAppTheme.fontName,
                                         fontWeight: FontWeight.w600,
-                                            fontSize: 28,
+                                        fontSize: 28,
                                         color: FitnessAppTheme.nearlyDarkBlue,
                                       ),
                                     ),
                                   ),
-                                      // Padding(
-                                      //   padding: const EdgeInsets.only(
-                                      //       left: 8, bottom: 8),
-                                      //   child: Text(
-                                      //     '病院',
-                                      //     textAlign: TextAlign.center,
-                                      //     style: TextStyle(
-                                      //       fontFamily: FitnessAppTheme.fontName,
-                                      //       fontWeight: FontWeight.w500,
-                                      //       fontSize: 18,
-                                      //       letterSpacing: -0.2,
-                                      //       color: FitnessAppTheme.nearlyDarkBlue,
-                                      //     ),
-                                      //   ),
-                                      // ),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(
+                                  //       left: 8, bottom: 8),
+                                  //   child: Text(
+                                  //     '病院',
+                                  //     textAlign: TextAlign.center,
+                                  //     style: TextStyle(
+                                  //       fontFamily: FitnessAppTheme.fontName,
+                                  //       fontWeight: FontWeight.w500,
+                                  //       fontSize: 18,
+                                  //       letterSpacing: -0.2,
+                                  //       color: FitnessAppTheme.nearlyDarkBlue,
+                                  //     ),
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                               Column(
@@ -119,7 +116,7 @@ class BodyMeasurementView extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 4.0),
                                         child: Text(
-                                              '6日前 8:26',
+                                          '10日前 9:26',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontFamily:
@@ -134,21 +131,21 @@ class BodyMeasurementView extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                      // Padding(
-                                      //   padding: const EdgeInsets.only(
-                                      //       top: 4, bottom: 14),
-                                      //   child: Text(
-                                      //     'InBody SmartScale',
-                                      //     textAlign: TextAlign.center,
-                                      //     style: TextStyle(
-                                      //       fontFamily: FitnessAppTheme.fontName,
-                                      //       fontWeight: FontWeight.w500,
-                                      //       fontSize: 12,
-                                      //       letterSpacing: 0.0,
-                                      //       color: FitnessAppTheme.nearlyDarkBlue,
-                                      //     ),
-                                      //   ),
-                                      // ),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(
+                                  //       top: 4, bottom: 14),
+                                  //   child: Text(
+                                  //     'InBody SmartScale',
+                                  //     textAlign: TextAlign.center,
+                                  //     style: TextStyle(
+                                  //       fontFamily: FitnessAppTheme.fontName,
+                                  //       fontWeight: FontWeight.w500,
+                                  //       fontSize: 12,
+                                  //       letterSpacing: 0.0,
+                                  //       color: FitnessAppTheme.nearlyDarkBlue,
+                                  //     ),
+                                  //   ),
+                                  // ),
                                 ],
                               )
                             ],
@@ -178,7 +175,7 @@ class BodyMeasurementView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                      'トラネキサム酸錠',
+                                  'アジスロマイシン錠',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: FitnessAppTheme.fontName,
@@ -191,7 +188,7 @@ class BodyMeasurementView extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6),
                                   child: Text(
-                                        '3錠 / 7日分',
+                                    '4錠 / 1日分',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: FitnessAppTheme.fontName,
@@ -205,96 +202,93 @@ class BodyMeasurementView extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                          'カロナール錠',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontFamily: FitnessAppTheme.fontName,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16,
-                                        letterSpacing: -0.2,
-                                        color: FitnessAppTheme.darkText,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 6),
-                                      child: Text(
-                                            '3錠 / 7日分',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: FitnessAppTheme.fontName,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 12,
-                                          color: FitnessAppTheme.grey
-                                              .withOpacity(0.5),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                              // Expanded(
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.end,
-                              //     crossAxisAlignment: CrossAxisAlignment.center,
-                              //     children: <Widget>[
-                              //       Column(
-                              //         mainAxisAlignment: MainAxisAlignment.center,
-                              //         crossAxisAlignment: CrossAxisAlignment.end,
-                              //         children: <Widget>[
-                              //           Text(
-                              //             '20%',
-                              //             style: TextStyle(
-                              //               fontFamily: FitnessAppTheme.fontName,
-                              //               fontWeight: FontWeight.w500,
-                              //               fontSize: 16,
-                              //               letterSpacing: -0.2,
-                              //               color: FitnessAppTheme.darkText,
-                              //             ),
-                              //           ),
-                              //           Padding(
-                              //             padding: const EdgeInsets.only(top: 6),
-                              //             child: Text(
-                              //               'Body fat',
-                              //               textAlign: TextAlign.center,
-                              //               style: TextStyle(
-                              //                 fontFamily: FitnessAppTheme.fontName,
-                              //                 fontWeight: FontWeight.w600,
-                              //                 fontSize: 12,
-                              //                 color: FitnessAppTheme.grey
-                              //                     .withOpacity(0.5),
-                              //               ),
-                              //             ),
-                              //           ),
-                              //         ],
-                              //       ),
-                              //     ],
-                              //   ),
-                              // )
+                          // Expanded(
+                          //   child: Row(
+                          //     mainAxisAlignment: MainAxisAlignment.center,
+                          //     crossAxisAlignment: CrossAxisAlignment.center,
+                          //     children: <Widget>[
+                          //       Column(
+                          //         mainAxisAlignment: MainAxisAlignment.center,
+                          //         crossAxisAlignment: CrossAxisAlignment.center,
+                          //         children: <Widget>[
+                          //           Text(
+                          //             'カロナール錠',
+                          //             textAlign: TextAlign.center,
+                          //             style: TextStyle(
+                          //               fontFamily: FitnessAppTheme.fontName,
+                          //               fontWeight: FontWeight.w500,
+                          //               fontSize: 16,
+                          //               letterSpacing: -0.2,
+                          //               color: FitnessAppTheme.darkText,
+                          //             ),
+                          //           ),
+                          //           Padding(
+                          //             padding: const EdgeInsets.only(top: 6),
+                          //             child: Text(
+                          //               '3錠 / 7日分',
+                          //               textAlign: TextAlign.center,
+                          //               style: TextStyle(
+                          //                 fontFamily: FitnessAppTheme.fontName,
+                          //                 fontWeight: FontWeight.w600,
+                          //                 fontSize: 12,
+                          //                 color: FitnessAppTheme.grey
+                          //                     .withOpacity(0.5),
+                          //               ),
+                          //             ),
+                          //           ),
+                          //         ],
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
+                          // Expanded(
+                          //   child: Row(
+                          //     mainAxisAlignment: MainAxisAlignment.end,
+                          //     crossAxisAlignment: CrossAxisAlignment.center,
+                          //     children: <Widget>[
+                          //       Column(
+                          //         mainAxisAlignment: MainAxisAlignment.center,
+                          //         crossAxisAlignment: CrossAxisAlignment.end,
+                          //         children: <Widget>[
+                          //           Text(
+                          //             '20%',
+                          //             style: TextStyle(
+                          //               fontFamily: FitnessAppTheme.fontName,
+                          //               fontWeight: FontWeight.w500,
+                          //               fontSize: 16,
+                          //               letterSpacing: -0.2,
+                          //               color: FitnessAppTheme.darkText,
+                          //             ),
+                          //           ),
+                          //           Padding(
+                          //             padding: const EdgeInsets.only(top: 6),
+                          //             child: Text(
+                          //               'Body fat',
+                          //               textAlign: TextAlign.center,
+                          //               style: TextStyle(
+                          //                 fontFamily: FitnessAppTheme.fontName,
+                          //                 fontWeight: FontWeight.w600,
+                          //                 fontSize: 12,
+                          //                 color: FitnessAppTheme.grey
+                          //                     .withOpacity(0.5),
+                          //               ),
+                          //             ),
+                          //           ),
+                          //         ],
+                          //       ),
+                          //     ],
+                          //   ),
+                          // )
                         ],
                       ),
                     )
                   ],
                 ),
-               
               ),
             ),
-              )
-         ),
+          ),
         );
       },
     );
   }
-
 }

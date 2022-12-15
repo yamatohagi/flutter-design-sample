@@ -42,7 +42,7 @@ class _PopularCourseListViewState extends State<PopularCourseListView>
               scrollDirection: Axis.vertical,
               children: List<Widget>.generate(
                 Category.popularCourseList.length,
-                (int index) {
+                (int index) {  
                   final int count = Category.popularCourseList.length;
                   final Animation<double> animation =
                       Tween<double>(begin: 0.0, end: 1.0).animate(

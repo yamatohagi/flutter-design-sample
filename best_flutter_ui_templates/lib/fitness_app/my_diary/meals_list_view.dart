@@ -51,7 +51,7 @@ class _MealsListViewState extends State<MealsListView>
             transform: Matrix4.translationValues(
                 0.0, 30 * (1.0 - widget.mainScreenAnimation!.value), 0.0),
             child: Container(
-              height: 216,
+              height: 50,
               width: double.infinity,
               child: ListView.builder(
                 padding: const EdgeInsets.only(
